@@ -1,0 +1,48 @@
+With that in mind, take a look at the code in the three previous exercises.
+Where do you notice violations of the principle? 
+In which cases do they accompany or indicate other SOLID principle violations? 
+Are there any cases where they obscure other violations?
+Next, look at the API of Backbone.js. 
+Does it require violations of the principle in order for it to be used successfully? 
+If so, in what ways could it be changed to avoid violating the principle?
+
+Interface  Segregation
+  Env. and Dy. should be there own thing
+  Dy. shouldn't have to pass in a new environment
+
+Other violations:
+  Open Closed - new code would change existing source code
+  LSP
+    sometimes you don't need inheritance - case of exercise 3
+
+
+Backbone.js
+
+  Backbone violates a lot of SOLID pinciples
+    SRP
+      -Job.js and Role.js are fat models who have multiple acotors
+    Open Closed
+      -a lot of existing code would have to change if a new feature was added
+
+
+
+      There are a lot of mutator methods:
+
+      off in backbone - you can add off to an obj - which removes a previously bound callback function from an object. In the case of inheriting, you could call off on a subtype of a type, and then the subtype wouldn't respond to all of the same methods as type
+      once - allows a callback to fire once before being remove
+      listenToOnce
+      stopListenting - stops an object from listening to its events
+      unset - model.unset(attribute, [options]) 
+      Remove an attribute by deleting it from the internal attributes hash.
+      clear - model.clear([options]) 
+      Removes all attributes from the model, including the id attribute. Fires a "change" event   
+      sync - persists state of a model to the server. Can be overridden for custom behavior.
+
+      constructor - you can override a model's constructor
+
+
+    events - models changes, then the model's view is updated
+
+
+
+

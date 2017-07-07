@@ -1,0 +1,31 @@
+With that in mind, take a look at the code in the three previous exercises.
+Where do you notice violations of the principle? 
+In which cases do they accompany or indicate other SOLID principle violations? 
+Are there any cases where they obscure other violations?
+Next, look at the API of Backbone.js. 
+Does it require violations of the principle in order for it to be used successfully? 
+If so, in what ways could it be changed to avoid violating the principle?
+
+
+Interface Segregation Princple Violations
+
+  create multiple interfaces
+    interface for creating a new job - interface for job requirements
+    -contain Recruiter
+    -contain jobApplicants
+    interface for recruiter
+
+  Make fine grained interfaces that are client specific.
+     JobMatchCollection - interface - can implement jobRepresentation and roleRepresentation
+
+   Fat Classes
+    job.js and role.js are performing a lot of methods
+
+
+Indicate Other SOLID Violations
+  LSP Violation - JobMatchCollection.js - type checking for jobRepresentation or roleRepresentation. This is also an open/closed violation because if a new type is added, existing code would have to be changed
+  SRP - Who are the actors?
+    -different business units
+  OCP - existing code would have to be changed, if a new feature is added
+
+

@@ -1,0 +1,39 @@
+The generalized definition of the Interface Segregation Principle is "Don't depend on things you don't need."
+
+With that in mind, take a look at the code in the three previous exercises.
+Where do you notice violations of the principle? 
+In which cases do they accompany or indicate other SOLID principle violations? 
+Are there any cases where they obscure other violations?
+Next, look at the API of Backbone.js. 
+Does it require violations of the principle in order for it to be used successfully? 
+If so, in what ways could it be changed to avoid violating the principle?
+
+
+
+-don't depend on methods that you do not call / job.js has degenerative methods
+  -hasBeenViewed markJobViewed basically do the same thing, hadBeenViewed is called, markJobviewed is not
+
+JobView is a fat interface - the interfaces of the class can be broken up
+  into groups of member functions. 
+
+  1. create a Candidate Interface
+      -create a Candidate.js
+      -create a CandidateView.js
+     create an application interface
+      -create application.js
+      -create applicationView.js
+  
+  2. the interface for getting and setting attributes of a job should be moved from JobItemView.js into Job.js
+    -ex/ markJobApplied - this.model.set("applied", true) --> this should be done in the Job.js model
+    -don't reach into the model to update model attributes
+
+  3. create interfaces for the different business actors who could request changes
+    -ex/ Legal Job Interface, HR Job Interface, Compliance Job Interface
+    
+
+Other SOLID  VIOLATIONS:
+-SRP - other business actors
+-OPEN CLOSED - to add more abilities to this code, the existing code would have to be changed. Code could not just be added. 
+  ex/ - if you want to get the job description - you would have to add a function to get job description
+  -alternatively you can add a get method to Job.js and pass in "job-description"
+- LSP - none
